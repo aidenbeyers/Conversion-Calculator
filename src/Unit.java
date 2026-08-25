@@ -10,5 +10,5 @@ abstract class Unit {
         this.value = value;
     }
     
-    abstract boolean convertable(Unit unit1, Unit unit2);
+    abstract boolean convertable(Object unit1, Object unit2);
 }
