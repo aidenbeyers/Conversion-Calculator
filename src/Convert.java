@@ -3,68 +3,72 @@ import java.util.Scanner;
 public class Convert {
 
     static void main(String[] args) {
-
-        boolean repeat = true;
+        
         Scanner scanner = new Scanner(System.in);
         
-        System.out.println("Hi. This is a Conversion Calculator. What kind of units would you like to convert?");
+        System.out.println("Hi. This is a Conversion Calculator. You will get the choice to convert between two different units.");
         
         converter:
-        while(repeat) {
-            System.out.println("Please type one of these three options:");
-            System.out.println("distance");
-            System.out.println("weight");
-            System.out.println("time");
+        while(true) {
+            System.out.println("Here are the different convertible units based on category");
+            System.out.println();
+            System.out.println("Units measuring Distance:");
+            System.out.println("kilometer (km)");
+            System.out.println("meter (m)");
+            System.out.println("centimeter (cm)");
+            System.out.println();
+            System.out.println("Units measuring Weight:");
+            System.out.println();
+            System.out.println("Units measuring Time:");
+            System.out.println();
             
-            String input = scanner.next();
-            
-            // If distance is selected, the different distance options will be made available.
-            if(input.equals("distance")) {
-                System.out.println("Here are your different units:");
-                System.out.println("kilometer (km)");
-                System.out.println("meter (m)");
-                System.out.println("centimeter (cm)");
+            System.out.println("Now you will enter what you would like converted:");
+            System.out.println("Please enter the unit being converted:");
 
-                System.out.println("Now you will enter what you would like converted:");
-                System.out.println("Please enter the unit being converted:");
-                
-                // Loops until a valid input for Unit 1 is made.
-                unit1_input:
-                while(true) {
-                    String Unit1 = scanner.next();
-                    if(validDistanceUnit(Unit1)) {
-                        break unit1_input;
-                    }
-                    System.out.println("Invalid input. Try Again.");
+            // Loops until a valid input for Unit 1 is made.
+            unit1_input:
+            while(true) {
+                String Unit1 = scanner.next();
+                if(validDistanceUnit(Unit1)) {
+                    break unit1_input;
                 }
+                System.out.println("Invalid input. Try Again.");
+            }
 
-                System.out.println("Now please enter it's value:");
-                
-                // Loops until Unit1 can be assigned a proper value;
-                unit1_value_input:
-                while(true) {
-                    String Unit1_Value = scanner.next();
-                    if(isNumeric(Unit1_Value)) {
-                        Double Unit1_Numeric_Value = Double.parseDouble(Unit1_Value);
-                        break unit1_value_input;
-                    }
-                    System.out.println("Invalid input. Try Again.");
+            System.out.println("Now please enter it's value:");
+
+            // Loops until Unit1 can be assigned a proper value;
+            unit1_value_input:
+            while(true) {
+                String Unit1_Value = scanner.next();
+                if(isNumeric(Unit1_Value)) {
+                    Double Unit1_Numeric_Value = Double.parseDouble(Unit1_Value);
+                    break unit1_value_input;
                 }
-                
-            } else if(input.equals("weight")) {
-                
-            } else if (input.equals("time")) {
-                
-            } else {
-                while(true) {
-                    System.out.println("Invalid input. Try again? (y/n)");
-                    input = scanner.next();
-                    if(input.equals("yes") || input.equals("y") || input.equals("Yes") || input.equals("Y")) {
-                        break;
-                    } else if (input.equals("no") || input.equals("n") || input.equals("No") || input.equals("N")) {
-                        break converter;
-                    }
+                System.out.println("Invalid input. Try Again.");
+            }
+
+            // Loops until a valid input for Unit 2 is made.
+            unit2_input:
+            while(true) {
+                String Unit2 = scanner.next();
+                if(validDistanceUnit(Unit2)) {
+                    break unit2_input;
                 }
+                System.out.println("Invalid input. Try Again.");
+            }
+
+            System.out.println("Now please enter it's value:");
+
+            // Loops until Unit1 can be assigned a proper value;
+            unit2_value_input:
+            while(true) {
+                String Unit2_Value = scanner.next();
+                if(isNumeric(Unit2_Value)) {
+                    Double Unit2_Numeric_Value = Double.parseDouble(Unit2_Value);
+                    break unit2_value_input;
+                }
+                System.out.println("Invalid input. Try Again.");
             }
         }
     }
