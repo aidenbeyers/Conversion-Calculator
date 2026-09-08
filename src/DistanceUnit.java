@@ -5,7 +5,7 @@ abstract class DistanceUnit extends Unit{
     }
     
     @Override
-    boolean convertable(Object unit1, Object unit2) {
-        return unit1 instanceof DistanceUnit && unit2 instanceof DistanceUnit;
+    boolean convertable(Object unit2) {
+        return unit2 instanceof DistanceUnit;
     }
 }

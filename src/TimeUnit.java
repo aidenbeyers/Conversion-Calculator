@@ -5,7 +5,7 @@ abstract class TimeUnit extends Unit{
     }
 
     @Override
-    boolean convertable(Object unit1, Object unit2) {
-        return unit1 instanceof TimeUnit && unit2 instanceof TimeUnit;
+    boolean convertable(Object unit2) {
+        return unit2 instanceof TimeUnit;
     }
 }
