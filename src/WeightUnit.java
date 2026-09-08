@@ -5,7 +5,7 @@ abstract class WeightUnit extends Unit {
     }
 
     @Override
-    boolean convertable(Object unit1, Object unit2) {
-        return unit1 instanceof WeightUnit && unit2 instanceof WeightUnit;
+    boolean convertable(Object unit2) {
+        return unit2 instanceof WeightUnit;
     }
 }
