@@ -1,8 +1,8 @@
 abstract class Unit {
     
     private final String NAME;
-    private final String SYMBOL;
-    private double value;
+    protected final String SYMBOL;
+    protected double value;
     
     Unit(String name, String symbol, double value) {
         this.NAME = name;
@@ -11,4 +11,6 @@ abstract class Unit {
     }
     
     abstract boolean convertible(String s);
+    
+    abstract double convert(String s);
 }
