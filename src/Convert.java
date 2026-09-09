@@ -70,7 +70,11 @@ public class Convert {
                     System.out.println("Invalid input. Try Again.");
                 }
 
-                System.out.println("Unit 1 cannot be converted into the second unit you entered. Try Again.");
+                assert unit1 != null;
+                if(unit1.convertable(Unit2)) {
+                    break convertable;
+                }
+                System.out.println("Those units cannot be converted. Reenter your second unit.");
             }
             
         }
