@@ -26,9 +26,10 @@ public class Convert {
             System.out.println("Please enter the unit being converted:");
 
             // Loops until a valid input for Unit 1 is made.
+            String Unit1;
             unit1_input:
             while(true) {
-                String Unit1 = scanner.next();
+                Unit1 = scanner.next();
                 if(validDistanceUnit(Unit1)) {
                     break unit1_input;
                 }
@@ -37,39 +38,41 @@ public class Convert {
 
             System.out.println("Now please enter it's value:");
 
+            String Unit1_Value;
+            double Unit1_Numeric_Value;
             // Loops until Unit1 can be assigned a proper value;
             unit1_value_input:
             while(true) {
-                String Unit1_Value = scanner.next();
+                Unit1_Value = scanner.next();
                 if(isNumeric(Unit1_Value)) {
-                    Double Unit1_Numeric_Value = Double.parseDouble(Unit1_Value);
+                    Unit1_Numeric_Value = Double.parseDouble(Unit1_Value);
                     break unit1_value_input;
                 }
                 System.out.println("Invalid input. Try Again.");
             }
+            
+            Unit unit1 = createUnit(Unit1, Unit1_Numeric_Value);
 
-            // Loops until a valid input for Unit 2 is made.
-            unit2_input:
+            // Loops until a unit 2 that is convertible from unit 1 is created.
+            Unit unit2;
+            convertable:
             while(true) {
-                String Unit2 = scanner.next();
-                if(validDistanceUnit(Unit2)) {
-                    break unit2_input;
+                System.out.println("Please enter the unit you want to convert to:");
+                
+                // Loops until a valid input for Unit 2 is made.
+                String Unit2;
+                unit2_input:
+                while(true) {
+                    Unit2 = scanner.next();
+                    if(validDistanceUnit(Unit2)) {
+                        break unit2_input;
+                    }
+                    System.out.println("Invalid input. Try Again.");
                 }
-                System.out.println("Invalid input. Try Again.");
-            }
 
-            System.out.println("Now please enter it's value:");
-
-            // Loops until Unit1 can be assigned a proper value;
-            unit2_value_input:
-            while(true) {
-                String Unit2_Value = scanner.next();
-                if(isNumeric(Unit2_Value)) {
-                    Double Unit2_Numeric_Value = Double.parseDouble(Unit2_Value);
-                    break unit2_value_input;
-                }
-                System.out.println("Invalid input. Try Again.");
+                System.out.println("Unit 1 cannot be converted into the second unit you entered. Try Again.");
             }
+            
         }
     }
     
@@ -93,6 +96,23 @@ public class Convert {
             return true; // Catches formats like "123", "-45.67", or "3.14"
         } catch (NumberFormatException e) {
             return false;
+        }
+    }
+    
+    private static Unit createUnit(String unit, Double value) {
+        Unit u;
+        switch(unit) {
+            case "kilometer", "Kilometer", "km":
+                u = new Kilometer(value);
+                return u;
+            case "meter", "Meter", "m":
+                u = new Meter(value);
+                return u;
+            case "centimeter", "Centimeter", "cm":
+                u = new Centimeter(value);
+                return u;
+            default:
+                return null;
         }
     }
 }
