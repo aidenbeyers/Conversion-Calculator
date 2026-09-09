@@ -55,7 +55,7 @@ public class Convert {
 
             // Loops until a unit 2 that is convertible from unit 1 is created.
             Unit unit2;
-            convertable:
+            convertible:
             while(true) {
                 System.out.println("Please enter the unit you want to convert to:");
                 
@@ -71,8 +71,8 @@ public class Convert {
                 }
 
                 assert unit1 != null;
-                if(unit1.convertable(Unit2)) {
-                    break convertable;
+                if(unit1.convertible(Unit2)) {
+                    break convertible;
                 }
                 System.out.println("Those units cannot be converted. Reenter your second unit.");
             }

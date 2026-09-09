@@ -16,7 +16,7 @@ abstract class DistanceUnit extends Unit{
     }
     
     @Override
-    boolean convertable(String s) {
+    boolean convertible(String s) {
         return units.contains(s);
     }
 }
