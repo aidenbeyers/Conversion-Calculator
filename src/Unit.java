@@ -10,5 +10,5 @@ abstract class Unit {
         this.value = value;
     }
     
-    abstract boolean convertable(Object unit2);
+    abstract boolean convertable(String s);
 }
