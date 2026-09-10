@@ -1,7 +1,9 @@
+package units;
+
 import java.util.HashSet;
 import java.util.Set;
 
-abstract class WeightUnit extends Unit {
+public abstract class WeightUnit extends Unit {
 
     private static final Set<String> units = new HashSet<>(
             Set.of(
@@ -11,17 +13,17 @@ abstract class WeightUnit extends Unit {
             )
     );
     
-    WeightUnit(String symbol, double value) {
+    protected WeightUnit(String symbol, double value) {
         super(symbol, value);
     }
 
     @Override
-    boolean convertible(String s) {
+    public boolean convertible(String s) {
         return units.contains(s);
     }
 
     @Override
-    double convert(String s) {
+    public double convert(String s) {
         switch(super.SYMBOL + "-" + s) {
             // This section covers cases when converting from a kilogram
             case "kg-g":

@@ -1,23 +1,29 @@
+package units;
+
 import java.util.HashSet;
 import java.util.Set;
 
-abstract class TimeUnit extends Unit{
+public abstract class TimeUnit extends Unit{
 
     private static final Set<String> units = new HashSet<>(
-            Set.of()
+            Set.of(
+                    "seconds", "Seconds", "s", 
+                    "minutes", "Minutes", "mins", 
+                    "hours", "Hours", "hrs"
+            )
     );
     
-    TimeUnit(String symbol, double value) {
+    protected TimeUnit(String symbol, double value) {
         super(symbol, value);
     }
 
     @Override
-    boolean convertible(String s) {
+    public boolean convertible(String s) {
         return units.contains(s);
     }
 
     @Override
-    double convert(String s) {
+    public double convert(String s) {
         switch(super.SYMBOL + "-" + s) {
             // This section covers cases when converting from a kilogram
             case "s-mins":
