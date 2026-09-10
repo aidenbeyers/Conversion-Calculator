@@ -10,13 +10,19 @@ public class Convert {
 
         System.out.println("Here are the different convertible units based on category");
         System.out.println();
+        // Prints out the list of Units that measure distance
         System.out.println("Units measuring Distance:");
         System.out.println("kilometer (km)");
         System.out.println("meter (m)");
         System.out.println("centimeter (cm)");
         System.out.println();
+        // Prints out the list of Units that measure Weight
         System.out.println("Units measuring Weight:");
+        System.out.println("kilogram (kg)");
+        System.out.println("gram (g)");
+        System.out.println("milligram (mg)");
         System.out.println();
+        // Prints out the list of Units that measure Time
         System.out.println("Units measuring Time:");
         System.out.println();
 
@@ -31,7 +37,7 @@ public class Convert {
             unit1_input:
             while(true) {
                 Unit1 = scanner.next();
-                if(validDistanceUnit(Unit1)) {
+                if(validUnit(Unit1)) {
                     break unit1_input;
                 }
                 System.out.println("Invalid input. Try Again.");
@@ -64,7 +70,7 @@ public class Convert {
                 unit2_input:
                 while(true) {
                     Unit2 = scanner.next();
-                    if(validDistanceUnit(Unit2)) {
+                    if(validUnit(Unit2)) {
                         break unit2_input;
                     }
                     System.out.println("Invalid input. Try Again.");
@@ -98,10 +104,11 @@ public class Convert {
         scanner.close();
     }
     
-    private static boolean validDistanceUnit(String string) {
+    private static boolean validUnit(String string) {
         boolean valid = true;
         switch(string) {
-            case "kilometer", "Kilometer", "km", "meter", "Meter", "m", "centimeter", "Centimeter", "cm":
+            case "kilometer", "Kilometer", "km", "meter", "Meter", "m", "centimeter", "Centimeter", "cm", 
+                 "kilogram", "Kilogram", "kg", "gram", "Gram", "g", "milligram", "Milligram", "mg":
                 break;
             default:
                 valid = false;
@@ -132,6 +139,15 @@ public class Convert {
                 return u;
             case "centimeter", "Centimeter", "cm":
                 u = new Centimeter(value);
+                return u;
+            case "kilogram", "Kilogram", "kg":
+                u = new Kilogram(value);
+                return u;
+            case "gram", "Gram", "g":
+                u = new Gram(value);
+                return u;
+            case "milligram", "Milligram", "mg":
+                u = new Milligram(value);
                 return u;
             default:
                 return null;

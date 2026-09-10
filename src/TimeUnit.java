@@ -7,7 +7,7 @@ abstract class TimeUnit extends Unit{
             Set.of()
     );
     
-    TimeUnit(String name, String symbol, double value) {
+    TimeUnit(String symbol, double value) {
         super(symbol, value);
     }
 
