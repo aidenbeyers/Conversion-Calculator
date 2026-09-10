@@ -8,7 +8,7 @@ abstract class TimeUnit extends Unit{
     );
     
     TimeUnit(String name, String symbol, double value) {
-        super(name, symbol, value);
+        super(symbol, value);
     }
 
     @Override

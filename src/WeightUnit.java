@@ -8,7 +8,7 @@ abstract class WeightUnit extends Unit {
     );
     
     WeightUnit(String name, String symbol, double value) {
-        super(name, symbol, value);
+        super(symbol, value);
     }
 
     @Override

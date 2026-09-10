@@ -11,8 +11,8 @@ abstract class DistanceUnit extends Unit{
             )
     );
     
-    DistanceUnit(String name, String symbol, double value) {
-        super(name, symbol, value);
+    DistanceUnit(String symbol, double value) {
+        super(symbol, value);
     }
     
     @Override
