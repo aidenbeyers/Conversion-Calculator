@@ -1,9 +1,11 @@
+package units;
+
 import java.util.HashSet;
 import java.util.Set;
 
-abstract class DistanceUnit extends Unit{
+public abstract class DistanceUnit extends Unit{
     
-    private static final Set<String> units = new HashSet<>(
+    protected static final Set<String> units = new HashSet<>(
             Set.of(
                     "km", "kilometer", "Kilometer", 
                     "m", "meter", "Meter", 
@@ -11,17 +13,17 @@ abstract class DistanceUnit extends Unit{
             )
     );
     
-    DistanceUnit(String symbol, double value) {
+    protected DistanceUnit(String symbol, double value) {
         super(symbol, value);
     }
     
     @Override
-    boolean convertible(String s) {
+    public boolean convertible(String s) {
         return units.contains(s);
     }
     
     @Override
-    double convert(String s) {
+    public double convert(String s) {
         switch(super.SYMBOL + "-" + s) {
             // This section covers cases when converting from a kilometer
             case "km-m":
