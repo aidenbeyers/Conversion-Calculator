@@ -24,6 +24,9 @@ public class Convert {
         System.out.println();
         // Prints out the list of Units that measure Time
         System.out.println("Units measuring Time:");
+        System.out.println("seconds (s)");
+        System.out.println("minutes (mins)");
+        System.out.println("hours (hrs)");
         System.out.println();
 
         System.out.println("Now you will enter what you would like converted:");
@@ -108,7 +111,8 @@ public class Convert {
         boolean valid = true;
         switch(string) {
             case "kilometer", "Kilometer", "km", "meter", "Meter", "m", "centimeter", "Centimeter", "cm", 
-                 "kilogram", "Kilogram", "kg", "gram", "Gram", "g", "milligram", "Milligram", "mg":
+                 "kilogram", "Kilogram", "kg", "gram", "Gram", "g", "milligram", "Milligram", "mg",
+                 "seconds", "Seconds", "s", "minutes", "Minutes", "mins", "hours", "Hours", "hrs":
                 break;
             default:
                 valid = false;
@@ -148,6 +152,15 @@ public class Convert {
                 return u;
             case "milligram", "Milligram", "mg":
                 u = new Milligram(value);
+                return u;
+            case "seconds", "Seconds", "s":
+                u = new Seconds(value);
+                return u;
+            case "minutes", "Minutes", "mins":
+                u = new Minutes(value);
+                return u;
+            case "hours", "Hours", "hrs":
+                u = new Hours(value);
                 return u;
             default:
                 return null;
