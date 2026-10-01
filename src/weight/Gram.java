@@ -4,7 +4,7 @@ import units.WeightUnit;
 
 public class Gram extends WeightUnit {
 
-    public Gram(double value) {
+    public Gram(String value) {
         super("g", value);
     }
 }

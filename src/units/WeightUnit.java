@@ -1,5 +1,7 @@
 package units;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -13,7 +15,7 @@ public abstract class WeightUnit extends Unit {
             )
     );
     
-    protected WeightUnit(String symbol, double value) {
+    protected WeightUnit(String symbol, String value) {
         super(symbol, value);
     }
 
@@ -23,25 +25,25 @@ public abstract class WeightUnit extends Unit {
     }
 
     @Override
-    public double convert(String s) {
+    public BigDecimal convert(String s) {
         switch(super.SYMBOL + "-" + s) {
             // This section covers cases when converting from a kilogram
             case "kg-g":
-                return super.value * 1000.0;
+                return super.value.multiply(new BigDecimal("1000.0"));
             case "kg-mg":
-                return super.value * 100000.0;
+                return super.value.multiply(new BigDecimal("100000.0"));
 
             //This section covers cases when converting from a gram
             case "g-kg":
-                return super.value / 1000.0;
+                return super.value.divide(new BigDecimal("1000.0"), 3, RoundingMode.HALF_UP);
             case "g-mg":
-                return super.value * 100.0;
+                return super.value.multiply(new BigDecimal("100.0"));
 
             //This section covers cases when converting from a milligram    
             case "mg-kg":
-                return super.value / 100000.0;
+                return super.value.divide(new BigDecimal("100000.0"), 3, RoundingMode.HALF_UP);
             case "mg-g":
-                return super.value / 100.0;
+                return super.value.divide(new BigDecimal("100.0"), 3, RoundingMode.HALF_UP);
 
             //The default assumes the user attempts to convert a unit to itself.    
             default:

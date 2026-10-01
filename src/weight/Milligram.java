@@ -4,7 +4,7 @@ import units.WeightUnit;
 
 public class Milligram extends WeightUnit {
 
-    public Milligram(double value) {
+    public Milligram(String value) {
         super("mg", value);
     }
 }
