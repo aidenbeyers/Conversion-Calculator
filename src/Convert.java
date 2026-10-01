@@ -9,6 +9,7 @@ import weight.Gram;
 import weight.Kilogram;
 import weight.Milligram;
 
+import java.math.BigDecimal;
 import java.util.Scanner;
 
 public class Convert {
@@ -60,19 +61,17 @@ public class Convert {
             System.out.println("Now please enter it's value:");
 
             String Unit1_Value;
-            double Unit1_Numeric_Value;
             // Loops until Unit1 can be assigned a proper value;
             unit1_value_input:
             while(true) {
                 Unit1_Value = scanner.next();
-                if(isNumeric(Unit1_Value)) {
-                    Unit1_Numeric_Value = Double.parseDouble(Unit1_Value);
+                if(isNonNegativeNum(Unit1_Value)) {
                     break unit1_value_input;
                 }
                 System.out.println("Invalid input. Try Again.");
             }
             
-            Unit unit1 = createUnit(Unit1, Unit1_Numeric_Value);
+            Unit unit1 = createUnit(Unit1, Unit1_Value);
 
             // Loops until a unit 2 that is convertible from unit 1 is created.
             String Unit2;
@@ -131,19 +130,19 @@ public class Convert {
         return valid;
     }
 
-    private static boolean isNumeric(String str) {
+    private static boolean isNonNegativeNum(String str) {
         if (str == null || str.isEmpty()) {
             return false;
         }
         try {
-            Double.parseDouble(str);
-            return true; // Catches formats like "123", "-45.67", or "3.14"
+            BigDecimal value = new BigDecimal(str);
+            return value.compareTo(BigDecimal.ZERO) >= 0;
         } catch (NumberFormatException e) {
             return false;
         }
     }
     
-    private static Unit createUnit(String unit, Double value) {
+    private static Unit createUnit(String unit, String value) {
         Unit u;
         switch(unit) {
             case "kilometer", "Kilometer", "km":

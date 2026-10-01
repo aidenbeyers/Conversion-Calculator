@@ -1,5 +1,7 @@
 package units;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -13,7 +15,7 @@ public abstract class DistanceUnit extends Unit{
             )
     );
     
-    protected DistanceUnit(String symbol, double value) {
+    protected DistanceUnit(String symbol, String value) {
         super(symbol, value);
     }
     
@@ -23,25 +25,25 @@ public abstract class DistanceUnit extends Unit{
     }
     
     @Override
-    public double convert(String s) {
+    public BigDecimal convert(String s) {
         switch(super.SYMBOL + "-" + s) {
             // This section covers cases when converting from a kilometer
             case "km-m":
-                return super.value * 1000.0;
+                return super.value.multiply(new BigDecimal("1000.0"));
             case "km-cm":
-                return super.value * 100000.0;
+                return super.value.multiply(new BigDecimal("100000.0"));
                 
             //This section covers cases when converting from a meter
             case "m-km":
-                return super.value / 1000.0;
+                return super.value.divide(new BigDecimal("1000.0"), 3, RoundingMode.HALF_UP);
             case "m-cm":
-                return super.value * 100.0;
+                return super.value.multiply(new BigDecimal("100.0"));
                 
             //This section covers cases when converting from a centimeter    
             case "cm-km":
-                return super.value / 100000.0;
+                return super.value.divide(new BigDecimal("100000.0"), 3, RoundingMode.HALF_UP);
             case "cm-m":
-                return super.value / 100.0;
+                return super.value.divide(new BigDecimal("100.0"), 3, RoundingMode.HALF_UP);
                 
             //The default assumes the user attempts to convert a unit to itself.    
             default:

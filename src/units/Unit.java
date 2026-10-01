@@ -1,16 +1,18 @@
 package units;
 
+import java.math.BigDecimal;
+
 public abstract class Unit {
     
     protected final String SYMBOL;
-    protected double value;
+    protected BigDecimal value;
     
-    protected Unit(String symbol, double value) {
+    protected Unit(String symbol, String value) {
         this.SYMBOL = symbol;
-        this.value = value;
+        this.value = new BigDecimal(value);
     }
     
     public abstract boolean convertible(String s);
     
-    public abstract double convert(String s);
+    public abstract BigDecimal convert(String s);
 }

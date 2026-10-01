@@ -4,7 +4,7 @@ import units.DistanceUnit;
 
 public class Centimeter extends DistanceUnit {
 
-    public Centimeter(double value) {
+    public Centimeter(String value) {
         super("cm", value);
     }
 }

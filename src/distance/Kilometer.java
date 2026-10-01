@@ -4,7 +4,7 @@ import units.DistanceUnit;
 
 public class Kilometer extends DistanceUnit {
     
-    public Kilometer(double value) {
+    public Kilometer(String value) {
         super("km", value);
     }
 }
