@@ -15,4 +15,8 @@ public abstract class Unit {
     public abstract boolean convertible(String s);
     
     public abstract BigDecimal convert(String s);
+    
+    public String getSYMBOL() {
+        return this.SYMBOL;
+    }
 }

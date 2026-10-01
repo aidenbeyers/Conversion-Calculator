@@ -1,3 +1,6 @@
+import temperature.Celsius;
+import temperature.Fahrenheit;
+import temperature.Kelvin;
 import time.Hours;
 import time.Minutes;
 import time.Seconds;
@@ -14,7 +17,7 @@ import java.util.Scanner;
 
 public class Convert {
 
-    static void main(String[] args) {
+    static void main() {
         
         Scanner scanner = new Scanner(System.in);
         
@@ -40,6 +43,12 @@ public class Convert {
         System.out.println("minutes (mins)");
         System.out.println("hours (hrs)");
         System.out.println();
+        // Prints out the list of Units that measure Temperature
+        System.out.println("Units measuring Temperature:");
+        System.out.println("fahrenheit (F)");
+        System.out.println("celsius (C)");
+        System.out.println("kelvin (K)");
+        System.out.println();
 
         System.out.println("Now you will enter what you would like converted:");
         
@@ -48,12 +57,11 @@ public class Convert {
             System.out.println("Please enter the unit being converted:");
 
             // Loops until a valid input for Unit 1 is made.
-            String Unit1;
-            unit1_input:
+            String Unit1_Symbol;
             while(true) {
-                Unit1 = scanner.next();
-                if(validUnit(Unit1)) {
-                    break unit1_input;
+                Unit1_Symbol = scanner.next();
+                if(validUnit(Unit1_Symbol)) {
+                    break;
                 }
                 System.out.println("Invalid input. Try Again.");
             }
@@ -62,41 +70,39 @@ public class Convert {
 
             String Unit1_Value;
             // Loops until Unit1 can be assigned a proper value;
-            unit1_value_input:
             while(true) {
                 Unit1_Value = scanner.next();
                 if(isNonNegativeNum(Unit1_Value)) {
-                    break unit1_value_input;
+                    break;
                 }
                 System.out.println("Invalid input. Try Again.");
             }
             
-            Unit unit1 = createUnit(Unit1, Unit1_Value);
+            Unit unit1 = createUnit(Unit1_Symbol, Unit1_Value);
 
             // Loops until a unit 2 that is convertible from unit 1 is created.
-            String Unit2;
-            convertible:
+            String Unit2_Symbol;
             while(true) {
                 System.out.println("Please enter the unit you want to convert to:");
                 
                 // Loops until a valid input for Unit 2 is made.
-                unit2_input:
                 while(true) {
-                    Unit2 = scanner.next();
-                    if(validUnit(Unit2)) {
-                        break unit2_input;
+                    Unit2_Symbol = scanner.next();
+                    if(validUnit(Unit2_Symbol)) {
+                        break;
                     }
                     System.out.println("Invalid input. Try Again.");
                 }
 
                 assert unit1 != null;
-                if(unit1.convertible(Unit2)) {
-                    break convertible;
+                if(unit1.convertible(Unit2_Symbol)) {
+                    break;
                 }
                 System.out.println("Those units cannot be converted. Reenter your second unit.");
             }
 
-            System.out.println("Here is the computed value: " + unit1.convert(Unit2) + Unit2);
+            Unit unit2 = createUnit(Unit2_Symbol);
+            System.out.println("Here is the computed value: " + unit1.convert(unit2.getSYMBOL()) + " " + unit2.getSYMBOL());
             
             repeat:
             while(true) {
@@ -122,7 +128,9 @@ public class Convert {
         switch(string) {
             case "kilometer", "Kilometer", "km", "meter", "Meter", "m", "centimeter", "Centimeter", "cm", 
                  "kilogram", "Kilogram", "kg", "gram", "Gram", "g", "milligram", "Milligram", "mg",
-                 "seconds", "Seconds", "s", "minutes", "Minutes", "mins", "hours", "Hours", "hrs":
+                 "seconds", "Seconds", "s", "minutes", "Minutes", "mins", "hours", "Hours", "hrs",
+                 "fahrenheit", "Fahrenheit", "F", "f", "celsius", "Celsius", "C", "c",
+                 "kelvin", "Kelvin", "K", "k":
                 break;
             default:
                 valid = false;
@@ -142,9 +150,9 @@ public class Convert {
         }
     }
     
-    private static Unit createUnit(String unit, String value) {
+    private static Unit createUnit(String unitName, String value) {
         Unit u;
-        switch(unit) {
+        switch(unitName) {
             case "kilometer", "Kilometer", "km":
                 u = new Kilometer(value);
                 return u;
@@ -172,8 +180,26 @@ public class Convert {
             case "hours", "Hours", "hrs":
                 u = new Hours(value);
                 return u;
+            case "fahrenheit", "Fahrenheit", "F", "f":
+                u = new Fahrenheit(value);
+                return u;
+            case "celsius", "Celsius", "C", "c":
+                u = new Celsius(value);
+                return u;
+            case "kelvin", "Kelvin", "K", "k":
+                u = new Kelvin(value);
+                return u;
             default:
                 return null;
         }
+    }
+    /*
+    This method overrides the createUnit method
+    It is explicitly meant so that the given symbol for the unit you want to be converted
+    to is transformed to a common symbol. That way no matter how you type the unit name,
+    as long as it is defined as a valid input, the convert methods will still work.
+     */
+    private static Unit createUnit(String unitName) {
+        return createUnit(unitName, "0");
     }
 }
