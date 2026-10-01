@@ -4,7 +4,7 @@ import units.TimeUnit;
 
 public class Hours extends TimeUnit {
 
-    public Hours(double value) {
+    public Hours(String value) {
         super("hrs", value);
     }
 }

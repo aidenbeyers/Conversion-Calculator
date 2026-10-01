@@ -4,7 +4,7 @@ import units.TimeUnit;
 
 public class Minutes extends TimeUnit {
 
-    public Minutes(double value) {
+    public Minutes(String value) {
         super("mins", value);
     }
 }
