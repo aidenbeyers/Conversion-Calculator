@@ -1,4 +1,4 @@
-import distance.Feet;
+import distance.*;
 import temperature.Celsius;
 import temperature.Fahrenheit;
 import temperature.Kelvin;
@@ -6,9 +6,6 @@ import time.Hours;
 import time.Minutes;
 import time.Seconds;
 import units.Unit;
-import distance.Kilometer;
-import distance.Meter;
-import distance.Centimeter;
 import weight.Gram;
 import weight.Kilogram;
 import weight.Milligram;
@@ -39,7 +36,7 @@ public class Convert {
                  "kilogram", "Kilogram", "kg", "gram", "Gram", "g", "milligram", "Milligram", "mg",
                  "seconds", "Seconds", "s", "minutes", "Minutes", "mins", "hours", "Hours", "hrs",
                  "fahrenheit", "Fahrenheit", "F", "f", "celsius", "Celsius", "C", "c",
-                 "kelvin", "Kelvin", "K", "k", "feet", "Feet", "ft":
+                 "kelvin", "Kelvin", "K", "k", "feet", "Feet", "ft", "in", "inch", "Inch":
                 break;
             default:
                 valid = false;
@@ -73,6 +70,9 @@ public class Convert {
                 return u;
             case "foot", "Foot", "ft":
                 u = new Feet(value);
+                return u;
+            case "inch", "Inch", "in":
+                u = new Inch(value);
                 return u;
             case "kilogram", "Kilogram", "kg":
                 u = new Kilogram(value);

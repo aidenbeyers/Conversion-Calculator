@@ -15,6 +15,7 @@ public class Terminal {
         System.out.println("meter (m)");
         System.out.println("centimeter (cm)");
         System.out.println("feet (ft)");
+        System.out.println("inch (in)");
         System.out.println();
         
         // Prints out the list of Units that measure Weight
