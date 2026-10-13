@@ -14,6 +14,7 @@ public class Terminal {
         System.out.println("kilometer (km)");
         System.out.println("meter (m)");
         System.out.println("centimeter (cm)");
+        System.out.println("yard (yd)");
         System.out.println("feet (ft)");
         System.out.println("inch (in)");
         System.out.println();

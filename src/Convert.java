@@ -36,7 +36,7 @@ public class Convert {
                  "kilogram", "Kilogram", "kg", "gram", "Gram", "g", "milligram", "Milligram", "mg",
                  "seconds", "Seconds", "s", "minutes", "Minutes", "mins", "hours", "Hours", "hrs",
                  "fahrenheit", "Fahrenheit", "F", "f", "celsius", "Celsius", "C", "c",
-                 "kelvin", "Kelvin", "K", "k", "feet", "Feet", "ft", "in", "inch", "Inch":
+                 "kelvin", "Kelvin", "K", "k", "feet", "Feet", "ft", "in", "inch", "Inch", "yd", "yard", "Yard":
                 break;
             default:
                 valid = false;
@@ -67,6 +67,9 @@ public class Convert {
                 return u;
             case "centimeter", "Centimeter", "cm":
                 u = new Centimeter(value);
+                return u;
+            case "yard", "Yard", "yd":
+                u = new Yard(value);
                 return u;
             case "foot", "Foot", "ft":
                 u = new Feet(value);

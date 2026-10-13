@@ -13,7 +13,8 @@ public abstract class DistanceUnit extends Unit{
                     "m", "meter", "Meter", 
                     "cm", "centimeter", "Centimeter",
                     "ft", "feet", "Feet",
-                    "in", "inch", "Inch"
+                    "in", "inch", "Inch",
+                    "yd", "yard", "Yard"
             )
     );
     
@@ -34,16 +35,20 @@ public abstract class DistanceUnit extends Unit{
                 return super.value.multiply(new BigDecimal("1000.0"));
             case "km-cm":
                 return super.value.multiply(new BigDecimal("100000.0"));
+            case "km-yd":
+                return super.value.multiply(new BigDecimal("39370.08"));
             case "km-ft":
                 return super.value.multiply(new BigDecimal("3280.84"));
             case "km-in":
-                return super.value.multiply(new BigDecimal("39370.08"));
+                return super.value.multiply(new BigDecimal("1093.61"));
                 
             //This section covers cases when converting from a meter
             case "m-km":
-                return super.value.divide(new BigDecimal("1000.0"), 3, RoundingMode.HALF_UP);
+                return super.value.divide(new BigDecimal("1000.0"), 6, RoundingMode.HALF_UP);
             case "m-cm":
                 return super.value.multiply(new BigDecimal("100.0"));
+            case "m-yd":
+                return super.value.multiply(new BigDecimal("1.09361"));
             case "m-ft":
                 return super.value.multiply(new BigDecimal("3.28084"));
             case "m-in":
@@ -51,33 +56,51 @@ public abstract class DistanceUnit extends Unit{
                 
             //This section covers cases when converting from a centimeter    
             case "cm-km":
-                return super.value.divide(new BigDecimal("100000.0"), 3, RoundingMode.HALF_UP);
+                return super.value.divide(new BigDecimal("100000.0"), 6, RoundingMode.HALF_UP);
             case "cm-m":
-                return super.value.divide(new BigDecimal("100.0"), 3, RoundingMode.HALF_UP);
+                return super.value.divide(new BigDecimal("100.0"), 6, RoundingMode.HALF_UP);
+            case "cm-yd":
+                return super.value.multiply(new BigDecimal("0.0109361"));
             case "cm-ft":
                 return super.value.multiply(new BigDecimal("0.0328084"));
             case "cm-in":
                 return super.value.multiply(new BigDecimal("0.3937008"));
 
+            //This section covers cases when converting from a yard    
+            case "yd-km":
+                return super.value.divide(new BigDecimal("39370.08"), 6, RoundingMode.HALF_UP);
+            case "yd-m":
+                return super.value.divide(new BigDecimal("1.09361"), 6, RoundingMode.HALF_UP);
+            case "yd-cm":
+                return super.value.multiply(new BigDecimal("91.44"));
+            case "yd-ft":
+                return super.value.multiply(new BigDecimal("3.0"));
+            case "yd-in":
+                return super.value.multiply(new BigDecimal("36.0"));
+
             //This section covers cases when converting from a foot    
             case "ft-km":
-                return super.value.divide(new BigDecimal("3280.84"), 3, RoundingMode.HALF_UP);
+                return super.value.divide(new BigDecimal("3280.84"), 6, RoundingMode.HALF_UP);
             case "ft-m":
-                return super.value.divide(new BigDecimal("3.28084"), 3, RoundingMode.HALF_UP);
+                return super.value.divide(new BigDecimal("3.28084"), 6, RoundingMode.HALF_UP);
             case "ft-cm":
                 return super.value.multiply(new BigDecimal("30.48"));
+            case "ft-yd":
+                return super.value.divide(new BigDecimal("3.0"), 6, RoundingMode.HALF_UP);
             case "ft-in":
                 return super.value.multiply(new BigDecimal("12.0"));
 
-            //This section covers cases when converting from an Inch    
+            //This section covers cases when converting from an inch    
             case "in-km":
-                return super.value.divide(new BigDecimal("39370.08"), 3, RoundingMode.HALF_UP);
+                return super.value.divide(new BigDecimal("39370.08"), 6, RoundingMode.HALF_UP);
             case "in-m":
-                return super.value.divide(new BigDecimal("39.37008"), 3, RoundingMode.HALF_UP);
+                return super.value.divide(new BigDecimal("39.37008"), 6, RoundingMode.HALF_UP);
             case "in-cm":
                 return super.value.multiply(new BigDecimal("2.54"));
+            case "in-yd":
+                return super.value.divide(new BigDecimal("36.0"), 6, RoundingMode.HALF_UP);
             case "in-ft":
-                return super.value.divide(new BigDecimal("12.0"), 3, RoundingMode.HALF_UP);
+                return super.value.divide(new BigDecimal("12.0"), 6, RoundingMode.HALF_UP);
                 
             //The default assumes the user attempts to convert a unit to itself.    
             default:
