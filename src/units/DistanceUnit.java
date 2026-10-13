@@ -12,7 +12,7 @@ public abstract class DistanceUnit extends Unit{
                     "km", "kilometer", "Kilometer", 
                     "m", "meter", "Meter", 
                     "cm", "centimeter", "Centimeter",
-                    "ft", "foot", "Foot"
+                    "ft", "feet", "Feet"
             )
     );
     
@@ -53,11 +53,11 @@ public abstract class DistanceUnit extends Unit{
                 return super.value.multiply(new BigDecimal("0.0328084"));
 
             //This section covers cases when converting from a foot    
-            case "f-km":
+            case "ft-km":
                 return super.value.divide(new BigDecimal("3280.84"), 3, RoundingMode.HALF_UP);
-            case "f-m":
+            case "ft-m":
                 return super.value.divide(new BigDecimal("3.28084"), 3, RoundingMode.HALF_UP);
-            case "f-cm":
+            case "ft-cm":
                 return super.value.multiply(new BigDecimal("30.48"));
                 
             //The default assumes the user attempts to convert a unit to itself.    

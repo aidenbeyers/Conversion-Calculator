@@ -1,3 +1,4 @@
+import distance.Feet;
 import temperature.Celsius;
 import temperature.Fahrenheit;
 import temperature.Kelvin;
@@ -30,6 +31,7 @@ public class Convert {
         System.out.println("kilometer (km)");
         System.out.println("meter (m)");
         System.out.println("centimeter (cm)");
+        System.out.println("feet (ft)");
         System.out.println();
         // Prints out the list of Units that measure Weight
         System.out.println("Units measuring Weight:");
@@ -130,7 +132,7 @@ public class Convert {
                  "kilogram", "Kilogram", "kg", "gram", "Gram", "g", "milligram", "Milligram", "mg",
                  "seconds", "Seconds", "s", "minutes", "Minutes", "mins", "hours", "Hours", "hrs",
                  "fahrenheit", "Fahrenheit", "F", "f", "celsius", "Celsius", "C", "c",
-                 "kelvin", "Kelvin", "K", "k":
+                 "kelvin", "Kelvin", "K", "k", "feet", "Feet", "ft":
                 break;
             default:
                 valid = false;
@@ -161,6 +163,9 @@ public class Convert {
                 return u;
             case "centimeter", "Centimeter", "cm":
                 u = new Centimeter(value);
+                return u;
+            case "foot", "Foot", "ft":
+                u = new Feet(value);
                 return u;
             case "kilogram", "Kilogram", "kg":
                 u = new Kilogram(value);

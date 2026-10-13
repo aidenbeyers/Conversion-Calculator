@@ -2,9 +2,9 @@ package distance;
 
 import units.DistanceUnit;
 
-public class Foot extends DistanceUnit {
+public class Feet extends DistanceUnit {
 
-    public Foot(String value) {
+    public Feet(String value) {
         super("ft", value);
     }
 }
