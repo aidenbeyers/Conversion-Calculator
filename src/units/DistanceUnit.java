@@ -11,7 +11,8 @@ public abstract class DistanceUnit extends Unit{
             Set.of(
                     "km", "kilometer", "Kilometer", 
                     "m", "meter", "Meter", 
-                    "cm", "centimeter", "Centimeter"
+                    "cm", "centimeter", "Centimeter",
+                    "ft", "foot", "Foot"
             )
     );
     
@@ -32,18 +33,32 @@ public abstract class DistanceUnit extends Unit{
                 return super.value.multiply(new BigDecimal("1000.0"));
             case "km-cm":
                 return super.value.multiply(new BigDecimal("100000.0"));
+            case "km-ft":
+                return super.value.multiply(new BigDecimal("3280.84"));
                 
             //This section covers cases when converting from a meter
             case "m-km":
                 return super.value.divide(new BigDecimal("1000.0"), 3, RoundingMode.HALF_UP);
             case "m-cm":
                 return super.value.multiply(new BigDecimal("100.0"));
+            case "m-ft":
+                return super.value.multiply(new BigDecimal("3.28084"));
                 
             //This section covers cases when converting from a centimeter    
             case "cm-km":
                 return super.value.divide(new BigDecimal("100000.0"), 3, RoundingMode.HALF_UP);
             case "cm-m":
                 return super.value.divide(new BigDecimal("100.0"), 3, RoundingMode.HALF_UP);
+            case "cm-ft":
+                return super.value.multiply(new BigDecimal("0.0328084"));
+
+            //This section covers cases when converting from a foot    
+            case "f-km":
+                return super.value.divide(new BigDecimal("3280.84"), 3, RoundingMode.HALF_UP);
+            case "f-m":
+                return super.value.divide(new BigDecimal("3.28084"), 3, RoundingMode.HALF_UP);
+            case "f-cm":
+                return super.value.multiply(new BigDecimal("30.48"));
                 
             //The default assumes the user attempts to convert a unit to itself.    
             default:
